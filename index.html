@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Виктория Якимова — визажист & стилист по волосам</title>
+    <meta
+      name="description"
+      content="Современный сайт-визитка 2025: профессиональный макияж и укладки. Портфолио, услуги, быстрая запись."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0b0b10;
+        --fg: #e9ecf1;
+        --muted: #a8b0bd;
+        --brand: #e48bb1;
+        --brand-2: #7ad0d6;
+        --card: #12131a;
+        --glass: rgba(255, 255, 255, 0.06);
+        --stroke: rgba(255, 255, 255, 0.16);
+        --radius-2xl: 24px;
+        --radius-xl: 18px;
+        --shadow-1: 0 10px 30px rgba(0, 0, 0, 0.35),
+          inset 0 0 1px rgba(255, 255, 255, 0.06);
+        --shadow-2: 0 20px 60px rgba(0, 0, 0, 0.45);
+        --container: clamp(320px, 90vw, 1200px);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: Manrope, system-ui, -apple-system, "Segoe UI", Roboto,
+          Ubuntu, Cantarell, "Noto Sans", "Helvetica Neue", Arial;
+        background: var(--bg);
+        color: var(--fg);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ===== ССЫЛКИ (читаемые, не синие) ===== */
+      a {
+        color: var(--brand);
+        text-decoration: none;
+        font-weight: 700;
+        transition: color 0.22s ease, text-shadow 0.22s ease;
+      }
+      a:hover {
+        color: var(--brand-2);
+        text-shadow: 0 0 10px rgba(122, 208, 214, 0.18);
+      }
+      a:focus-visible {
+        outline: 3px solid rgba(122, 208, 214, 0.18);
+        outline-offset: 3px;
+        border-radius: 6px;
+      }
+
+      /* контейнеры */
+      .container {
+        max-width: var(--container);
+        margin: 0 auto;
+        padding: min(8vh, 80px) 20px;
+      }
+      /* НАРУЖНЫЙ СУЗИТЕЛЬ ДЛЯ Booking/Contacts — чтобы не "расплывалось" */
+      .container.narrow {
+        max-width: 880px;
+      }
+
+      /* ===== Фоновые слои ===== */
+      .bg-root {
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        overflow: hidden;
+      }
+      .bg-gradient {
+        position: absolute;
+        inset: -10% -10% 0 -10%;
+        background: radial-gradient(
+            60vmax 60vmax at 10% 10%,
+            rgba(228, 139, 177, 0.18) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            70vmax 70vmax at 90% 20%,
+            rgba(122, 208, 214, 0.12) 0%,
+            transparent 60%
+          ),
+          linear-gradient(180deg, #0b0b10 0%, #0a0a13 100%);
+        filter: saturate(120%);
+      }
+      .bg-grid {
+        position: absolute;
+        inset: 0;
+        opacity: 0.22;
+        mask-image: linear-gradient(#000, transparent 85%);
+        background-image: linear-gradient(var(--stroke) 1px, transparent 1px),
+          linear-gradient(90deg, var(--stroke) 1px, transparent 1px);
+        background-size: 48px 48px, 48px 48px;
+        mix-blend-mode: screen;
+      }
+      .noise {
+        position: absolute;
+        inset: -50%;
+        opacity: 0.6;
+        pointer-events: none;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.04"/></svg>');
+      }
+
+      /* ===== Навигация ===== */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: saturate(140%) blur(8px);
+        background: linear-gradient(
+          180deg,
+          rgba(11, 11, 16, 0.7),
+          rgba(11, 11, 16, 0.35),
+          transparent
+        );
+      }
+      .nav {
+        max-width: var(--container);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 14px 20px;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--fg);
+        text-decoration: none;
+      }
+      .logo-badge {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: conic-gradient(from 210deg, var(--brand), var(--brand-2));
+        display: grid;
+        place-items: center;
+        box-shadow: var(--shadow-1);
+      }
+      .logo-badge svg {
+        width: 22px;
+        height: 22px;
+        fill: #fff;
+      }
+      .nav .links {
+        margin-left: auto;
+        display: flex;
+        gap: 22px;
+        align-items: center;
+      }
+      .nav a {
+        color: var(--muted);
+        font-weight: 600;
+      }
+      .nav a:hover {
+        color: var(--fg);
+      }
+
+      /* кнопки */
+      .btn {
+        --p: 14px 18px;
+        padding: var(--p);
+        border-radius: 999px;
+        border: 1px solid var(--stroke);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.06),
+          rgba(255, 255, 255, 0.02)
+        );
+        box-shadow: var(--shadow-1);
+        color: var(--fg);
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.25s ease, box-shadow 0.25s ease,
+          border-color 0.25s ease;
+      }
+      .btn.primary {
+        background: linear-gradient(135deg, var(--brand), var(--brand-2));
+        color: #fff;
+        border: none;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-2);
+        border-color: rgba(255, 255, 255, 0.28);
+      }
+      .btn.primary:hover {
+        transform: translateY(-2px) scale(1.02);
+      }
+
+      /* ===== Текстовые элементы ===== */
+      .eyebrow {
+        display: inline-flex;
+        gap: 10px;
+        align-items: center;
+        font-weight: 700;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--muted);
+        font-size: 0.76rem;
+      }
+      .eyebrow::before {
+        content: "";
+        width: 32px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--brand), var(--brand-2));
+        border-radius: 2px;
+      }
+      h1 {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        font-size: clamp(2.4rem, 6vw, 4rem);
+        line-height: 1.06;
+        margin: 18px 0 10px;
+      }
+      h2 {
+        font-weight: 800;
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        margin: 0 0 6px;
+      }
+      p.lead {
+        color: #dfe6ef;
+        font-size: clamp(1rem, 2vw, 1.12rem);
+        max-width: 820px;
+      }
+
+      /* ===== HERO (без изменений) ===== */
+      .hero {
+        min-height: 74vh;
+        display: grid;
+        align-items: center;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 40px;
+        align-items: center;
+      }
+      .chip {
+        padding: 8px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--stroke);
+        background: var(--glass);
+        font-weight: 700;
+        font-size: 0.92rem;
+      }
+
+      /* ===== Секция Услуг ===== (сохраняем) */
+      .grid {
+        display: grid;
+        gap: 18px;
+      }
+      .grid.cols-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .service-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius-2xl);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.06),
+          rgba(255, 255, 255, 0.02)
+        );
+        border: 1px solid var(--stroke);
+        padding: 20px;
+        min-height: 230px;
+        box-shadow: var(--shadow-1);
+        cursor: pointer;
+      }
+
+      /* ===== Портфолио: равные карточки ===== */
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+      }
+      .portfolio-item {
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--stroke);
+        box-shadow: var(--shadow-1);
+        aspect-ratio: 4/3; /* одинаковая высота для всех */
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.02),
+          rgba(0, 0, 0, 0)
+        );
+      }
+      .portfolio-item img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        transition: transform 0.45s ease;
+      }
+      .portfolio-item:hover img {
+        transform: scale(1.05);
+      }
+
+      /* ===== Отзывы ===== */
+      .reviews {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      .review {
+        padding: 18px;
+        border-radius: var(--radius-xl);
+        border: 1px solid var(--stroke);
+        background: var(--glass);
+      }
+
+      /* ===== Модал / Диалог ===== */
+      dialog {
+        border: none;
+        padding: 0;
+        border-radius: 18px;
+        box-shadow: var(--shadow-2);
+        background: var(--card);
+        color: var(--fg);
+      }
+      dialog::backdrop {
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(3px);
+      }
+      .modal {
+        min-width: min(92vw, 860px);
+      }
+      .modal header {
+        position: sticky;
+        top: 0;
+        padding: 14px 16px;
+        background: linear-gradient(
+          180deg,
+          rgba(18, 19, 26, 0.96),
+          rgba(18, 19, 26, 0.9)
+        );
+        border-bottom: 1px solid var(--stroke);
+        border-top-left-radius: 18px;
+        border-top-right-radius: 18px;
+      }
+      .modal .content {
+        padding: 16px;
+      }
+
+      /* ===== Онлайн-запись — новая аккуратная вёрстка ===== */
+      .booking-layout {
+        display: grid;
+        grid-template-columns: 1fr 340px; /* форма + боковая карточка */
+        gap: 20px;
+        align-items: start;
+        margin-top: 12px;
+      }
+      @media (max-width: 960px) {
+        .booking-layout {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .booking-form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      @media (max-width: 720px) {
+        .booking-form {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* используем существующий service-card визуально для полей (чтобы «окна» остались как ты хочешь) */
+      .booking-form .service-card {
+        padding: 12px;
+        min-height: auto;
+        display: block;
+      }
+      .booking-side {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .booking-side .card {
+        border-radius: 14px;
+        padding: 16px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.03),
+          rgba(0, 0, 0, 0)
+        );
+        border: 1px solid var(--stroke);
+      }
+      .booking-side .card h3 {
+        color: var(--brand);
+        margin: 0 0 6px;
+        font-size: 1.04rem;
+      }
+      .booking-side .free-dates {
+        color: #dfe6ef;
+        font-weight: 700;
+      }
+
+      /* ===== Контакты — узкий аккуратный блок ===== */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-top: 12px;
+      }
+      @media (max-width: 960px) {
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ===== адаптив ===== */
+      @media (max-width: 960px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+        .grid.cols-3 {
+          grid-template-columns: 1fr;
+        }
+        .reviews {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* reveal animation */
+      .reveal {
+        opacity: 0;
+        transform: translateY(14px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      .reveal.in {
+        opacity: 1;
+        transform: none;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          transition: none;
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Фон -->
+    <div class="bg-root" aria-hidden="true">
+      <div class="bg-gradient"></div>
+      <div class="bg-grid"></div>
+      <div class="noise"></div>
+    </div>
+
+    <!-- NAV -->
+    <header>
+      <nav class="nav">
+        <a class="logo" href="#top">
+          <span class="logo-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2c2.5 4.5 5.5 6.9 9 7.2-3.6 1.6-6.1 4.8-7 12-1.3-7.4-3.8-10.6-7-12 3.5-.3 6.5-2.7 9-7.2z"
+              />
+            </svg>
+          </span>
+          <strong>Виктория Якимова</strong>
+          <span style="color: var(--muted); font-weight: 700"
+            >Визаж • Волосы</span
+          >
+        </a>
+
+        <div class="links">
+          <a href="#services">Услуги</a>
+          <a href="#portfolio">Портфолио</a>
+          <a href="#about">Обо мне</a>
+          <a href="#contact">Контакты</a>
+          <button class="btn primary" data-scrollto="#booking">
+            Записаться
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <main id="top" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow reveal">Beauty & Hair</span>
+          <h1 class="reveal" style="transition-delay: 0.06s">
+            Безупречный макияж и стильные укладки для съёмок, свадеб и
+            мероприятий
+          </h1>
+          <p class="lead reveal" style="transition-delay: 0.12s">
+            Я помогаю чувствовать уверенность на 100%: подчёркиваю вашу
+            индивидуальность, сохраняю стойкость образа на весь день и забочусь
+            о деталях.
+          </p>
+          <div class="tagline reveal" style="transition-delay: 0.18s">
+            <span class="chip">Натуральное свечение</span>
+            <span class="chip">Стойкость 12+ часов</span>
+            <span class="chip">Волосы: от гладких до волн</span>
+          </div>
+          <div
+            class="reveal"
+            style="
+              display: flex;
+              gap: 12px;
+              margin-top: 16px;
+              transition-delay: 0.24s;
+            "
+          >
+            <button class="btn" data-scrollto="#services">
+              Смотреть услуги
+            </button>
+            <button class="btn" data-scrollto="#portfolio">
+              Открыть портфолио
+            </button>
+          </div>
+        </div>
+        <aside
+          class="hero-visual reveal"
+          style="
+            transition-delay: 0.2s;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 420px;
+            box-shadow: var(--shadow-2);
+          "
+        >
+          <img
+            src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1368&auto=format&fit=crop"
+            alt="Модель"
+            style="
+              width: 120%;
+              left: -10%;
+              position: relative;
+              top: -8%;
+              filter: saturate(112%) contrast(1.05);
+            "
+          />
+        </aside>
+      </div>
+    </main>
+
+    <!-- УСЛУГИ -->
+    <section id="services">
+      <div
+        class="container"
+        style="
+          display: grid;
+          grid-template-columns: 1fr 0.6fr;
+          gap: 28px;
+          align-items: start;
+        "
+      >
+        <div>
+          <span class="eyebrow">Услуги</span>
+          <h2 class="reveal">Всё для идеального образа</h2>
+          <p class="lead reveal" style="transition-delay: 0.06s">
+            Макияж и волосы под задачу: съёмки, свадьба, деловая встреча или
+            вечер. Каждый пакет можно собрать под вас.
+          </p>
+
+          <div class="grid cols-3" style="margin-top: 14px">
+            <article class="service-card reveal" data-service="nude">
+              <div class="bg-blur"></div>
+              <h3>Вечерний макияж</h3>
+              <div class="meta">Свежесть и естественность</div>
+              <p>Лёгкое выравнивание тона, сияние, акцент на глаза или губы.</p>
+              <div class="price">от 3 500 ₽</div>
+            </article>
+
+            <article
+              class="service-card reveal"
+              data-service="wedding"
+              style="transition-delay: 0.05s"
+            >
+              <div class="bg-blur"></div>
+              <h3>Свадебный макияж</h3>
+              <div class="meta">Тест-примерка + день X</div>
+              <p>
+                Долговечность, водостойкость, ретушь зоны декольте, укладка.
+              </p>
+              <div class="price">от 12 000 ₽</div>
+            </article>
+
+            <article
+              class="service-card reveal"
+              data-service="shoot"
+              style="transition-delay: 0.1s"
+            >
+              <div class="bg-blur"></div>
+              <h3>Локоны & Пучок</h3>
+              <div class="meta">Гладкие, волны, объём</div>
+              <p>Термозащита, фиксация без склеивания, стойкость до вечера.</p>
+              <div class="price">от 6 000 ₽</div>
+            </article>
+
+            <article
+              class="service-card reveal"
+              data-service="hairstyle"
+              style="transition-delay: 0.15s"
+            >
+              <div class="bg-blur"></div>
+              <h3>Полный образ</h3>
+              <div class="meta">Гладкие, волны, объём</div>
+              <p>Термозащита, фиксация без склеивания, стойкость до вечера.</p>
+              <div class="price">от 3 000 ₽</div>
+            </article>
+
+            <article
+              class="service-card reveal"
+              data-service="evening"
+              style="transition-delay: 0.2s"
+            >
+              <div class="bg-blur"></div>
+              <h3>Полный образ с выездом</h3>
+              <div class="meta">Выход в свет</div>
+              <p>Выразительные глаза/стрелки, контуринг, укладка по запросу.</p>
+              <div class="price">от 8 000 ₽</div>
+            </article>
+
+            <article
+              class="service-card reveal"
+              data-service="mens"
+              style="transition-delay: 0.25s"
+            >
+              <div class="bg-blur"></div>
+              <h3>Груминг для мужчин</h3>
+              <div class="meta">Рекламные/деловые съёмки</div>
+              <p>Тонирование, фиксация волос, матовое anti-shine покрытие.</p>
+              <div class="price">от 2 500 ₽</div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Правый rail -->
+        <aside class="rail" aria-live="polite">
+          <div
+            class="card"
+            style="
+              padding: 16px;
+              border-radius: var(--radius-xl);
+              background: var(--glass);
+              border: 1px solid var(--stroke);
+            "
+          >
+            <div class="title">Секции</div>
+            <div class="desc" id="rail-desc">Сейчас: Услуги</div>
+          </div>
+          <div
+            class="card"
+            style="
+              padding: 16px;
+              border-radius: var(--radius-xl);
+              background: var(--glass);
+              border: 1px solid var(--stroke);
+            "
+          >
+            <div class="title">Быстрая запись</div>
+            <div class="desc">
+              Чат/WhatsApp: <a href="#contact">открыть контакты</a>
+            </div>
+          </div>
+          <div
+            class="card"
+            style="
+              padding: 16px;
+              border-radius: var(--radius-xl);
+              background: var(--glass);
+              border: 1px solid var(--stroke);
+            "
+          >
+            <div class="title">Свободные даты</div>
+            <div class="desc">
+              <span class="free-dates" aria-live="polite">Проверяю…</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ПОРТФОЛИО -->
+    <section id="portfolio">
+      <div class="container">
+        <span class="eyebrow">Портфолио</span>
+        <h2 class="reveal">Съёмки, свадьбы, backstage</h2>
+
+        <div class="toolbar reveal" role="tablist" style="margin-top: 12px">
+          <button class="tab" aria-pressed="true" data-filter="all">Все</button>
+          <button class="tab" data-filter="wedding">Свадебные</button>
+          <button class="tab" data-filter="nude">Nude</button>
+          <button class="tab" data-filter="bold">Смелые образы</button>
+        </div>
+
+        <div class="portfolio-grid reveal" id="grid" style="margin-top: 14px">
+          <div class="portfolio-item" data-tags="wedding">
+            <img
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop"
+              alt="Свадебный макияж"
+            />
+          </div>
+          <div class="portfolio-item" data-tags="nude">
+            <img
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1520975954732-35dd22299652?q=80&w=1200&auto=format&fit=crop"
+              alt="Nude макияж"
+            />
+          </div>
+          <div class="portfolio-item" data-tags="bold">
+            <img
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1503392968123-ceabe9a9a13a?q=80&w=1200&auto=format&fit=crop"
+              alt="Глянцевый образ"
+            />
+          </div>
+          <div class="portfolio-item" data-tags="wedding">
+            <img
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1520975920424-11258565c87b?q=80&w=1200&auto=format&fit=crop"
+              alt="Свадебная причёска"
+            />
+          </div>
+          <div class="portfolio-item" data-tags="bold">
+            <img
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1200&auto=format&fit=crop"
+              alt="Fashion образ"
+            />
+          </div>
+          <div class="portfolio-item" data-tags="nude">
+            <img
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop"
+              alt="Натуральная укладка"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ОБО МНЕ -->
+    <section id="about">
+      <div class="container">
+        <span class="eyebrow">Обо мне</span>
+        <h2 class="reveal">Виктория Якимова — визажист и стилист по волосам</h2>
+        <p class="lead reveal" style="transition-delay: 0.05s">
+          5 лет в индустрии красоты. Работаю с брендами, невестами и
+          продакшенами. Прохожу обучение дважды в год, чтобы держать руку на
+          пульсе трендов и технологий.
+        </p>
+
+        <div class="grid cols-3" style="margin-top: 16px">
+          <div class="service-card reveal">
+            <div class="bg-blur"></div>
+            <h3>Гигиена & безопасность</h3>
+            <p>
+              Одноразовые расходники, дезинфекция инструментов, гипоаллергенные
+              формулы.
+            </p>
+          </div>
+          <div class="service-card reveal" style="transition-delay: 0.05s">
+            <div class="bg-blur"></div>
+            <h3>Премиальные продукты</h3>
+            <p>
+              NARS, Dior, Charlotte Tilbury, Oribe, Olaplex и др. по задаче
+              образа.
+            </p>
+          </div>
+          <div class="service-card reveal" style="transition-delay: 0.1s">
+            <div class="bg-blur"></div>
+            <h3>Мобильная работа</h3>
+            <p>
+              Выезд по городу и области, готовность к ранним утрам и
+              tight-расписанию.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ОТЗЫВЫ -->
+    <section id="reviews">
+      <div class="container">
+        <span class="eyebrow">Отзывы</span>
+        <h2 class="reveal">Что говорят клиенты</h2>
+        <div class="reviews">
+          <div class="review reveal">
+            <div class="stars">★★★★★</div>
+            <p>
+              Макияж продержался до самой ночи, на фото — огонь. Виктория
+              невероятно деликатна и внимательна.
+            </p>
+            <div class="meta" style="color: var(--muted)">Анна, свадьба</div>
+          </div>
+          <div class="review reveal" style="transition-delay: 0.05s">
+            <div class="stars">★★★★★</div>
+            <p>
+              На съёмке оперативно меняли акценты, без лишних слов понимали
+              задачу. Эксперт.
+            </p>
+            <div class="meta" style="color: var(--muted)">
+              Виктория, продюсер
+            </div>
+          </div>
+          <div class="review reveal" style="transition-delay: 0.1s">
+            <div class="stars">★★★★★</div>
+            <p>
+              Укладка осталась лёгкой и живой, но всё держалось отлично. Теперь
+              только к вам.
+            </p>
+            <div class="meta" style="color: var(--muted)">Марина</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ЗАПИСЬ (переделанная, узкая и адаптивная) -->
+    <section id="booking">
+      <div class="container narrow">
+        <span class="eyebrow">Онлайн-запись</span>
+        <h2 class="reveal">Свободные окна и быстрая бронь</h2>
+        <p class="lead reveal" style="transition-delay: 0.04s">
+          Выберите удобное время — форма адаптирована под мобильные и десктоп.
+          Если хотите — бронируем через WhatsApp.
+        </p>
+
+        <div class="booking-layout reveal" style="transition-delay: 0.08s">
+          <!-- ФОРМА -->
+          <form
+            class="booking-form"
+            onsubmit="handleBooking(event)"
+            aria-label="Форма записи"
+          >
+            <input
+              class="service-card"
+              name="name"
+              placeholder="Ваше имя"
+              required
+            />
+            <input
+              class="service-card"
+              name="phone"
+              placeholder="Телефон / WhatsApp"
+              required
+            />
+            <select class="service-card" name="type" required>
+              <option value="Полный образ">Полный образ</option>
+              <option value="Свадебный макияж">Свадебный макияж</option>
+              <option value="Вечерний макияж">Вечерний макияж</option>
+              <option value="Укладка/локоны">Локоны / Пучок</option>
+            </select>
+            <input class="service-card" type="date" name="date" required />
+            <input class="service-card" type="time" name="time" required />
+            <button
+              class="btn primary"
+              type="submit"
+              style="grid-column: 1 / -1; padding: 14px; font-size: 1rem"
+            >
+              Отправить заявку
+            </button>
+          </form>
+
+          <!-- БОКОВАЯ КАРТОЧКА: Свободные окна / Быстрая бронь -->
+          <aside class="booking-side" aria-hidden="false">
+            <div class="card" role="region" aria-label="Свободные окна">
+              <h3>Свободные окна</h3>
+              <p style="margin: 6px 0; color: var(--muted)">
+                Следующие доступные даты:
+              </p>
+              <div class="free-dates" style="font-weight: 700; color: #dfe6ef">
+                Проверяю…
+              </div>
+            </div>
+
+            <div class="card" role="region" aria-label="Быстрая бронь">
+              <h3>Быстрая бронь</h3>
+              <p style="margin: 6px 0; color: var(--muted)">
+                Открыть чат в WhatsApp для мгновенной записи.
+              </p>
+              <a
+                id="quick-wa"
+                class="btn primary"
+                href="#"
+                target="_blank"
+                rel="noopener"
+                >Открыть WhatsApp</a
+              >
+            </div>
+          </aside>
+        </div>
+
+        <p class="lead" id="booking-result" style="margin-top: 10px"></p>
+      </div>
+    </section>
+
+    <!-- КОНТАКТЫ (узкий аккуратный блок) -->
+    <section id="contact">
+      <div class="container narrow">
+        <span class="eyebrow">Контакты</span>
+        <h2 class="reveal">Связаться со мной</h2>
+
+        <div class="contact-grid reveal" style="transition-delay: 0.06s">
+          <div class="service-card">
+            <div class="bg-blur"></div>
+            <h3>WhatsApp</h3>
+            <p>
+              <a href="https://wa.me/79045394449" target="_blank" rel="noopener"
+                >+7 904 539 44 49</a
+              >
+            </p>
+          </div>
+
+          <div class="service-card" style="transition-delay: 0.05s">
+            <div class="bg-blur"></div>
+            <h3>Instagram*</h3>
+            <p>
+              <a href="#" target="_blank" rel="noopener">@yakimova_viktoriaa</a
+              ><br /><small style="color: var(--muted)">*</small>
+            </p>
+          </div>
+
+          <div class="service-card" style="transition-delay: 0.1s">
+            <div class="bg-blur"></div>
+            <h3>Адрес студии</h3>
+            <p>Новосадовый, 5-й Парковый Переулок, 40</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div
+        class="container footer-grid"
+        style="
+          display: grid;
+          grid-template-columns: 1.4fr 0.8fr 0.8fr;
+          gap: 18px;
+          padding: 28px 20px;
+        "
+      >
+        <div>
+          <strong>Виктория Якимова</strong> — визажист & стилист по волосам<br />
+          <span class="copyright"
+            >© <span id="year"></span> Все права защищены</span
+          >
+        </div>
+
+        <div>
+          <div class="eyebrow" style="margin-bottom: 8px">Навигация</div>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap">
+            <a href="#services">Услуги</a>
+            <a href="#portfolio">Портфолио</a>
+            <a href="#about">Обо мне</a>
+            <a href="#booking">Запись</a>
+            <a href="#contact">Контакты</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="eyebrow" style="margin-bottom: 8px">Документы</div>
+          <div style="color: var(--muted)">
+            Политика конфиденциальности • Договор-оферта
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- DIALOG / LIGHTBOX -->
+    <dialog id="dialog">
+      <div class="modal">
+        <header
+          style="
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: space-between;
+          "
+        >
+          <strong id="dialog-title">Услуга</strong>
+          <button class="btn" onclick="closeDialog()" style="--p: 10px 12px">
+            Закрыть
+          </button>
+        </header>
+        <div class="content" id="dialog-content"></div>
+      </div>
+    </dialog>
+
+    <script>
+      // год в футере
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // плавный скролл по .btn[data-scrollto]
+      document.querySelectorAll("[data-scrollto]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const sel = btn.getAttribute("data-scrollto");
+          const el = document.querySelector(sel);
+          if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+
+      // reveal on scroll
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("in");
+              observer.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => observer.observe(el));
+
+      // rail section spy
+      const railDesc = document.getElementById("rail-desc");
+      const sections = [...document.querySelectorAll("section")];
+      const sec2name = {
+        services: "Услуги",
+        portfolio: "Портфолио",
+        about: "Обо мне",
+        reviews: "Отзывы",
+        booking: "Запись",
+        contact: "Контакты",
+      };
+      const spy = new IntersectionObserver(
+        (entries) => {
+          const visible = entries
+            .filter((e) => e.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          if (visible)
+            railDesc &&
+              (railDesc.textContent =
+                "Сейчас: " +
+                (sec2name[visible.target.id] || visible.target.id));
+        },
+        { threshold: [0.3, 0.6, 0.9] }
+      );
+      sections.forEach((s) => spy.observe(s));
+
+      // free dates (populate everywhere with .free-dates)
+      (function fillFreeDates() {
+        const els = document.querySelectorAll(".free-dates");
+        if (!els.length) return;
+        const today = new Date();
+        const d1 = new Date(
+          today.getFullYear(),
+          today.getMonth(),
+          today.getDate() + 2
+        );
+        const d2 = new Date(
+          today.getFullYear(),
+          today.getMonth(),
+          today.getDate() + 5
+        );
+        const txt =
+          d1.toLocaleDateString("ru-RU") +
+          ", " +
+          d2.toLocaleDateString("ru-RU");
+        els.forEach((el) => (el.textContent = txt));
+      })();
+
+      // prepare Quick WhatsApp link (replace phone as needed)
+      const quickWa = document.getElementById("quick-wa");
+      const waPhone = "79990000000"; // <-- Поменяй на реальный номер
+      if (quickWa) quickWa.href = `https://wa.me/${waPhone}`;
+
+      // hover blur in service cards (original behavior)
+      document.querySelectorAll(".service-card").forEach((card) => {
+        card.addEventListener("pointermove", (e) => {
+          const r = card.getBoundingClientRect();
+          card.style.setProperty("--mx", e.clientX - r.left + "px");
+          card.style.setProperty("--my", e.clientY - r.top + "px");
+        });
+      });
+
+      // service cards click -> dialog (kept from original)
+      const dialog = document.getElementById("dialog");
+      const content = document.getElementById("dialog-content");
+      const title = document.getElementById("dialog-title");
+      const serviceDetails = {
+        nude: {
+          t: "NUDE-макияж",
+          d: "Лёгкая база, корректировка тона, кремовые текстуры для эффекта «своей кожи». Подбор под ваш подтон и задачи съёмки/дня.",
+        },
+        wedding: {
+          t: "Свадебный образ",
+          d: "Тестовый макияж+причёска заранее, в день свадьбы — стойкость, контроль блеска, ретушь зоны декольте, вуаль/украшения.",
+        },
+        shoot: {
+          t: "Съёмка / клип",
+          d: "Учитываю свет и оптику, работаю быстро между дублями. Возможна смена образов, дымчатые/графичные решения.",
+        },
+        hairstyle: {
+          t: "Укладка & локоны",
+          d: "Объём у корней, защита и фиксация. Гладкие хвосты, голливудские волны, небрежные текстуры — что угодно.",
+        },
+        evening: {
+          t: "Вечерний образ",
+          d: "Выразительные глаза, стойкие помады, баланс с оттенком платья и аксессурами.",
+        },
+        mens: {
+          t: "Груминг для мужчин",
+          d: "Матовый антиблик, коррекция тона, укладка без эффекта «лака». Идеально для камеры.",
+        },
+      };
+      document.querySelectorAll("[data-service]").forEach((card) => {
+        card.addEventListener("click", () => {
+          const key = card.getAttribute("data-service");
+          const item = serviceDetails[key];
+          title.textContent = item?.t || "Услуга";
+          content.innerHTML =
+            `<p style="color:#cfd6e3">${item?.d || ""}</p>` +
+            `<div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">` +
+            `<button class="btn primary" data-scrollto="#booking">Записаться</button>` +
+            `<button class="btn" onclick="closeDialog()">Позже</button>` +
+            `</div>`;
+          dialog.showModal();
+        });
+      });
+      function closeDialog() {
+        dialog.close();
+      }
+
+      // portfolio filter
+      const tabs = document.querySelectorAll(".tab");
+      const items = document.querySelectorAll(".portfolio-item");
+      tabs.forEach((t) =>
+        t.addEventListener("click", () => {
+          tabs.forEach((x) => x.setAttribute("aria-pressed", "false"));
+          t.setAttribute("aria-pressed", "true");
+          const f = t.dataset.filter;
+          items.forEach((it) => {
+            const tags = it.dataset.tags || "";
+            const visible =
+              f === "all" ||
+              tags
+                .split(",")
+                .map((s) => s.trim())
+                .includes(f);
+            it.style.display = visible ? "" : "none";
+          });
+        })
+      );
+
+      // lightbox for portfolio
+      document.querySelectorAll(".portfolio-item img").forEach((img) => {
+        img.addEventListener("click", () => {
+          title.textContent = "Просмотр фото";
+          content.innerHTML = `<img src="${img.src}" alt="${
+            img.alt || ""
+          }" style="width:100%; height:auto; border-radius:12px" />`;
+          dialog.showModal();
+        });
+      });
+
+      // booking form handler -> prepare WA link
+      function handleBooking(e) {
+        e.preventDefault();
+        const fd = new FormData(e.target);
+        const d = Object.fromEntries(fd.entries());
+        const msg = `Здравствуйте! Хочу записаться:%0AИмя: ${encodeURIComponent(
+          d.name
+        )}%0AТелефон: ${encodeURIComponent(
+          d.phone
+        )}%0AУслуга: ${encodeURIComponent(d.type)}%0AДата: ${encodeURIComponent(
+          d.date
+        )}%0AВремя: ${encodeURIComponent(d.time)}`;
+        const phone = waPhone; // использует тот же номер, что и quick-wa
+        const wa = `https://wa.me/${phone}?text=${msg}`;
+        const res = document.getElementById("booking-result");
+        res.innerHTML = `Заявка подготовлена. Если окно не открылось, нажмите <a target="_blank" rel="noopener" href="${wa}">сюда</a>.`;
+        window.open(wa, "_blank");
+        e.target.reset();
+      }
+    </script>
+  </body>
+</html>
